@@ -1,5 +1,6 @@
 package net.glowstone;
 
+import net.glowstone.server.GlowServer;
 import net.minecraft.workbench.Workbench;
 import net.minecraft.workbench.WorkbenchImpl;
 import net.minecraft.workbench.server.Server;
@@ -10,6 +11,11 @@ import net.minecraft.workbench.server.Server;
 public class GlowstoneMain extends WorkbenchImpl {
 
     /**
+     * The server
+     */
+    private GlowServer server;
+
+    /**
      * The main method of Glowstone.
      *
      * @param args Command-line parameters.
@@ -17,9 +23,16 @@ public class GlowstoneMain extends WorkbenchImpl {
     public static void main(String[] args) {
         GlowstoneMain main = new GlowstoneMain();
         Workbench.setInstance(main);
-        //main.handleParameters(args);
-        //main.start();
-        System.out.println("Coming soon!");
+        main.startServer(args);
+    }
+
+    /**
+     * Starts the server.
+     *
+     * @param args Command-line parameters.
+     */
+    private void startServer(String[] args) {
+        server = new GlowServer();
     }
 
     @Override
@@ -35,6 +48,6 @@ public class GlowstoneMain extends WorkbenchImpl {
 
     @Override
     public Server getServer() {
-        return null;
+        return server;
     }
 }
