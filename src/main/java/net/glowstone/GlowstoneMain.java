@@ -33,6 +33,7 @@ public class GlowstoneMain extends WorkbenchImpl {
      */
     private void startServer(String[] args) {
         server = new GlowServer();
+        server.start();
     }
 
     @Override
